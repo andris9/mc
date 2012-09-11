@@ -1,0 +1,16 @@
+{
+  "private": true,
+  "name": "rabbit-mail-consumer",
+  "version": "0.1.0",
+  "description": "RabbitMQ consumer to post received data",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "author": "",
+  "license": "BSD",
+  "dependencies":{
+    "amqp": "git://github.com/postwait/node-amqp.git"
+  }
+}

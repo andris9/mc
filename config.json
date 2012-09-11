@@ -1,0 +1,7 @@
+{
+    "rabbit": {
+        "url": "amqp://user:pass@host",
+        "exchange": "mail.parsed"
+    },
+    "targetUrl": "http://blog.node.ee/postreceive.php?api_token=12345"
+}
