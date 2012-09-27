@@ -8,9 +8,13 @@ var amqp = require("amqp"),
 rabbitQueue.on("message", function(message, callback){
     var url = urllib.parse(config.targetUrl, true, true);
 
+    message = new Buffer(JSON.stringify(message), "utf-8");
+
     url.method = "POST";
+
     url.headers = {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "Content-Length": message.length
     };
 
     var req = http.request(url, function(res) {
@@ -31,8 +35,7 @@ rabbitQueue.on("message", function(message, callback){
     });
 
     // write data to request body
-    req.write(JSON.stringify(message));
-    req.end();
+    req.end(message);
 
 });
 

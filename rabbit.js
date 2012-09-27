@@ -40,7 +40,7 @@ RabbitQueue.prototype.openInterface = function(){
             queueOptions = {exclusive: true, durable: false, autoDelete: true};
         }
         rabbit.queue(this.interfaceName, queueOptions, (function(queue){
-            queue.bind("mail.parsed", "#");
+            queue.bind(config.rabbit.exchange, "#");
             console.log('Queue ' + queue.name + ' is open for subscription');
             this.interface = queue;
             this.interface.subscribe({ack: true}, this.subscription.bind(this)).addCallback((function(ok){
